@@ -1,0 +1,61 @@
+$svg : '.editSvg';
+.wrapper{
+  margin: 50px auto 50px auto;
+  min-height: 95.8%;
+  max-width: 600px;
+  background-color: #ffffff;
+  padding: 50px 100px;
+}
+.pageList{
+  input{
+    transition: all .2s ease;
+    cursor: pointer;
+    text-align: center;
+    max-width: 100%;
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    &:focus{
+      outline: none;
+      opacity: .7;
+      border-bottom: 1px solid black;
+      transform: translateY(-3px);
+      #{$svg}{
+      opacity: 1;
+      }
+    }
+  }
+  img{
+    transition: all .2s ease;
+    opacity: 0;
+  }
+}
+.header{
+  text-align: center;
+  display: block;
+  margin: 0 auto 100px 0;
+}
+.description{
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.authorsReviewers{
+  text-align: right;
+  margin-left: auto;
+  margin-right: -50px;
+  overflow: auto;
+  span{
+    margin-right: 40px;
+  }
+  ul{
+    li{
+      text-decoration: none;
+      list-style-type: none
+    }
+  }
+  margin-bottom: 90px;
+}
