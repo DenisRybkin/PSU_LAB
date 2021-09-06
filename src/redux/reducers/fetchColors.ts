@@ -51,7 +51,7 @@ export const fetchColors = (state= initialState, action : SetColorsAction) => {
     return  produce(state, draft => {
         switch (action.type) {
             case ColorsActionsTypes.SET_COLORS:
-                draft.colors = initialState.colors;
+                draft.colors = state.colors;
                 draft.isLoaded = true;
                 break;
             default :

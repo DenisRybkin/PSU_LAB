@@ -11,7 +11,7 @@ function App() : JSX.Element {
 
     React.useEffect(() => {
         dispatch(fetchData());
-        dispatch(fetchColors())
+        dispatch(fetchColors());
     }, [dispatch]);
 
 

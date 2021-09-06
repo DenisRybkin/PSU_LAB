@@ -1,75 +1,83 @@
 import React from 'react';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {UniversalText} from "../../components/UniversalText/UniversalText";
+import {Line} from "../../components/Line/Line";
 import style from './Home.module.scss'
 
 
 export const Home: React.FC = (): JSX.Element => {
 
     const {data,isLoaded} = useTypedSelector(state => state.fetchData);
+    const page = useTypedSelector(state => state.input);
 
     const buildPageTitle = () : JSX.Element => {
         return (
             <div className={style.pageList}>
                 <div className={style.header}>
-                    <UniversalText className="h1" tag="h1">
+                    <Line className="h1" tag="h1" type="title">
                         {data.title}
-                    </UniversalText>
-                    <UniversalText className="h2" tag="h2">
+                    </Line>
+                    <Line className="h2" tag="h2" type="subtitle">
                         {data.subtitle}
-                    </UniversalText>
-                    <UniversalText className="h3" tag="h3">
+                    </Line>
+                    <Line className="h3" tag="h3" type="department">
                         {data.department}
-                    </UniversalText>
+                    </Line>
                 </div>
                 <div className="body">
                     <div className={style.description}>
-                        <UniversalText tag="h3" className="shortH3">
+                        <Line tag="h3" className="shortH3" type="descriptionTitle">
                             {data.description.title}
-                        </UniversalText>
-                        <UniversalText tag="h5">
-                            О лабораторной работы №1 по дисциплине “Основы WEB-Программирования
-                        </UniversalText>
-                        <UniversalText className="shortText" tag="h5">
-                            Вариант №5
-                        </UniversalText>
+                        </Line>
+                        <Line tag="h5" type="descriptionAbout">
+                            {data.description.about}
+                        </Line>
+                        <Line className="shortText mb" tag="h3" type="descriptionOption">
+                            {data.description.option}
+                        </Line>
                     </div>
                     <div className={style.authorsReviewers}>
                         <div className="authors">
-                            <UniversalText tag="span">
+                            <Line tag="span">
                                 {data.authors.fullNames.length > 0 ?  "Выполнили :" : "Выполнил :"}
-                            </UniversalText>
+                            </Line>
                             <ul>
                                 {data.authors.fullNames
                                     .map((item, index) => (
-                                        <UniversalText tag="li" key={item.person}>
+                                        <Line tag="li" key={item.person}
+                                              type={index === 0 ? 'authorsFirstPerson' : 'authorsSecondPerson'}>
                                             {item.person}
-                                        </UniversalText>
+                                        </Line>
                                     ))}
                             </ul>
                         </div>
                         <div className="reviewers">
-                            <UniversalText tag="span" className="shortSpan">
-                                {data.reviewers.fullNames.length > 0 ?  "Приняли :" : "Принял :"}
-                            </UniversalText>
+                            <Line tag="span" className="shortSpan">
+                                {data.reviewers.fullNames.length > 1 ?  "Приняли :" : "Приняла :"}
+                            </Line>
                             <ul>
                                 {data.reviewers.fullNames
                                     .map((item, index) => (
-                                        <UniversalText tag="li" key={item.person}>{item.person}</UniversalText>
+                                        <Line tag="li" key={item.person} type='reviewersPerson'>
+                                            {item.person}
+                                        </Line>
                                     ))}
                             </ul>
                         </div>
                     </div>
                 </div>
-                <UniversalText className="footer" tag="footer">
+                <Line className="footer" tag="footer" type='footer'>
                     {data.footer}
-                </UniversalText>
+                </Line>
             </div>
         )
+    }
+    const downlandPage = (): void => {
+        console.log(page);
     }
 
     return (
         <div className={style.wrapper}>
+            <button className={style.button} onClick={downlandPage}>Загрузить</button>
             <div className="container" >
                 {Object.keys(data).length > 0 &&
                 isLoaded && buildPageTitle()}

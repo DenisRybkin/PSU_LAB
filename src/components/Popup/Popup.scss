@@ -1,3 +1,22 @@
+
+.posAbs-footer{
+  position: absolute;
+  top: -70px;
+  left: -40px;
+  right: 400px;
+}
+.posAbs-span{
+  transition: right .9s ease;
+  position: absolute;
+  bottom: 180px;
+  right: 500px;
+}
+.posAbs-ul{
+  transition: right .9s ease;
+  position: absolute;
+  bottom: 180px;
+  right: 440px;
+}
 .add__list-popup{
   display: flex;
   flex-direction: column;
@@ -10,6 +29,7 @@
   height: 155px;
   box-sizing: border-box;
   position: absolute;
+
   input{
     width: 94%;
     padding: 8px 0 8px 11px;

@@ -1,10 +1,10 @@
 $svg : '.editSvg';
 .wrapper{
   margin: 50px auto 50px auto;
-  min-height: 95.8%;
+  min-height: 99%;
   max-width: 600px;
   background-color: #ffffff;
-  padding: 50px 100px;
+  padding: 60px 80px;
 }
 .pageList{
   input{
@@ -58,4 +58,35 @@ $svg : '.editSvg';
     }
   }
   margin-bottom: 90px;
+}
+.button{
+  position: absolute;
+  color: #ffffff;
+  padding: 10px 20px 10px 19px;
+  right: 40px;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  width: 100px;
+  border: none;
+  background: #4DD599;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover{
+    background-color: darken(#4DD599, 5%);
+  }
+  &:active{
+    background-color: darken(#4DD599, 10%);
+  }
+  &-red{
+    background-color: #ff3333;
+    &:hover{
+      background-color: darken(#ff3333, 5%);
+    }
+    &:active{
+      background-color: darken(#ff3333, 10%);
+    }
+  }
 }

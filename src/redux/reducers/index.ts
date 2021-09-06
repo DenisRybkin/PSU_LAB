@@ -1,10 +1,10 @@
 import {combineReducers} from "redux";
-import {inputText} from "./inputText";
+import {input} from "./input";
 import {fetchData} from './fetchData';
 import {fetchColors} from "./fetchColors";
 
 export const rootReducer = combineReducers({
-    inputText,
+    input,
     fetchData,
     fetchColors,
 });
