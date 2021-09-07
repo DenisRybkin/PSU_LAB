@@ -1,5 +1,5 @@
 import {InputState,
-    InputActionsTypes,SetTitleAction} from '../types/input';
+    InputActionsTypes,SetTitleAction} from '../types/data';
 export interface ActionInterface{
     type : string,
     payload : InputState,
@@ -29,6 +29,10 @@ export const SetDescriptionOption = (text : string, color : string):ActionInterf
     type : InputActionsTypes.SET_DESCRIPTION_OPTION,
     payload : {text,color},
 });
+export const SetAuthorsAction = (text : string, color : string) : ActionInterface => ({
+    type : InputActionsTypes.SET_AUTHORS_ACTION,
+    payload : {text, color}
+})
 export const SetAuthorFirstPerson = (text : string, color : string):ActionInterface => ({
     type : InputActionsTypes.SET_AUTHORS_FIRST_PERSON,
     payload : {text,color},
@@ -37,10 +41,18 @@ export const SetAuthorSecondPerson = (text : string, color : string):ActionInter
     type : InputActionsTypes.SET_AUTHORS_SECOND_PERSON,
     payload : {text,color},
 });
-export const SetReviewsPerson = (text : string, color : string):ActionInterface => ({
-    type : InputActionsTypes.SET_REVIEWERS_PERSON,
+export const SetReviewsFirstPerson = (text : string, color : string):ActionInterface => ({
+    type : InputActionsTypes.SET_REVIEWERS_FIRST_PERSON,
     payload : {text,color},
 });
+export const SetReviewsSecondPerson = (text : string, color : string):ActionInterface => ({
+    type : InputActionsTypes.SET_REVIEWERS_SECOND_PERSON,
+    payload : {text,color},
+});
+export const SetReviewersAction = (text : string, color : string) : ActionInterface => ({
+    type : InputActionsTypes.SET_REVIEWERS_ACTION,
+    payload : {text, color}
+})
 export const SetFooter = (text : string, color : string):ActionInterface => ({
     type : InputActionsTypes.SET_FOOTER,
     payload : {text,color},

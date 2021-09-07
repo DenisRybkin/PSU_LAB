@@ -1,30 +1,36 @@
 {
   "title-page" : {
-    "title": "министерство науки и высшего образования рф",
-    "subtitle": "пензенский государственный университет",
-    "department": "Кафедра САПР",
+    "title": {"text": "министерство науки и высшего образования рф", "color": "black"} ,
+    "subtitle": {"text" : "пензенский государственный университет", "color":"black"},
+    "department": {"text" : "Кафедра САПР", "color":"black"},
     "description": {
-      "title" : "отчет",
-      "about": "О лабораторной работы №1 по дисциплине “Основы WEB-Программирования“ ",
-      "option" : "Вариант №5"
+      "title" : {"text" : "отчет", "color": "black"},
+      "about": {"text" : "О лабораторной работы №1 по дисциплине “Основы WEB-Программирования“", "color":"black"},
+      "option" : {"text" : "Вариант №5", "color": "black"}
     },
     "authors" : {
-      "personsDescription" : "студенты группы 20ВА1",
+      "authorsAction" : {"text" : "Выполнили","color" : "black"},
+      "personsDescription" : {"text" : "студенты группы 20ВА1", "color":"black"},
       "fullNames" : [
         {
-          "person": "Рыбкин Д.А"
+          "person": {"text" : "Рыбкин Д.А", "color":"black"}
         },
         {
-          "person": "Шульмин А.Н"
+          "person": {"text" : "Шульмин А.Н", "color":"black"}
         }
       ]
     },
     "reviewers" : {
+      "reviewersAction" : {"text" : "Приняли", "color" : "black"},
       "fullNames" : [
-        {"person" : "Бурукина И.П"}
+        {
+          "person" : {"text" : "Бурукина И.П", "color":"black"}
+        },
+        {
+          "person" : {"text" : "Бурукина И.П", "color":"black"}
+        }
       ]
-
     },
-    "footer" : "Пенза 2021 г."
+    "footer" : {"text" : "Пенза 2021 г.", "color":"black"}
   }
 }

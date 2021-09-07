@@ -5,47 +5,58 @@ import editSvg from './edit.svg';
 import classNames from 'classnames';
 import {Popup} from "../Popup/Popup";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {setTitle,SetSubtitle,SetDepartment,SetAuthorFirstPerson,SetAuthorSecondPerson,SetDescriptionOption,SetDescriptionTitle,SetFooter,SetReviewsPerson,SetDescriptionAbout} from '../../redux/actions/input'
+import {setTitle,
+    SetSubtitle,
+    SetDepartment,
+    SetAuthorFirstPerson,
+    SetAuthorSecondPerson,
+    SetDescriptionOption,
+    SetDescriptionTitle,
+    SetFooter,
+    SetReviewsFirstPerson,
+    SetReviewsSecondPerson,
+    SetDescriptionAbout,
+    SetAuthorsAction,
+    SetReviewersAction} from '../../redux/actions/input'
 import {useDispatch} from "react-redux";
 
 
-export const Line = ({tag, children,className,type} : LineInterface) : JSX.Element => {
+export const Line = React.memo(({tag, children,className,type,color} : LineInterface) : JSX.Element => {
 
     const dispatch = useDispatch();
     const {colors} = useTypedSelector(state => state.fetchColors);
 
     const [visiblePopup, setVisiblePopup] = React.useState(false);
     const [text, setText] = React.useState<string>(children? children : '');
-    const [activeColor, setActiveColor] = React.useState<string>('black');
+    const [activeColor, setActiveColor] = React.useState<string>(color);
 
     const popupRef = React.useRef(null);
     const inputRef = React.useRef(null)
 
+    const changeText = (text: string) : void => {
+        switchDispatch(activeColor,text);
+        setText(text);
+    }
     const closePopup = () => {
         setVisiblePopup(false);
     }
     const switchAssignColor = (color:string) : void => {
         setActiveColor(color);
     }
-    const EditText = (color :string) => {
-        setActiveColor(color);
-        setVisiblePopup(!visiblePopup);
-        switchDispatch(color);
-    }
     const ClearText = () : void => {
         setText('');
-        setVisiblePopup(!visiblePopup);
-        switchDispatch();
+        closePopup();
+        switchDispatch(activeColor,text);
     }
-    const onOutsideClick = React.useCallback((event : any) => {
+    const onOutsideClick = React.useCallback<(event : any) => void>((event : any) => {
         const path = event.path || (event.composedPath && event.composedPath());
-        if(!path.includes(popupRef.current) && !path.includes(inputRef.current) ){
-            setVisiblePopup(false);
-            switchDispatch(activeColor);
+        if(!path.includes(popupRef.current) && !path.includes(inputRef.current)){
+            closePopup();
         }
     }, [popupRef])
 
-    const switchDispatch = (color ?: string) => {
+    const switchDispatch = (color : string,text: string) => {
+        alert(text)
         switch (type) {
             case 'title':
                 if((children !== text || color !== 'black')){
@@ -68,75 +79,104 @@ export const Line = ({tag, children,className,type} : LineInterface) : JSX.Eleme
             case 'department':
                 if((children !== text || color !== 'black')){
                     if(color){
-                        dispatch(setTitle(text,color));
+                        dispatch(SetDepartment(text,color));
                     } else {
-                        dispatch(setTitle(text,'black'));
+                        dispatch(SetDepartment(text,'black'));
                     }
                 }
                 break;
             case 'authorFirstPerson':
                 if((children !== text || color !== 'black')){
                     if(color){
-                        dispatch(setTitle(text,color));
+                        dispatch(SetAuthorFirstPerson(text,color));
                     } else {
-                        dispatch(setTitle(text,'black'));
+                        dispatch(SetAuthorFirstPerson(text,'black'));
                     }
                 }
                 break;
             case 'authorSecondPerson':
                 if((children !== text || color !== 'black')){
                     if(color){
-                        dispatch(setTitle(text,color));
+                        dispatch(SetAuthorSecondPerson(text,color));
                     } else {
-                        dispatch(setTitle(text,'black'));
+                        dispatch(SetAuthorSecondPerson(text,'black'));
                     }
                 }
                 break;
             case'descriptionOption' :
                 if((children !== text || color !== 'black')){
                     if(color){
-                        dispatch(setTitle(text,color));
+                        dispatch(SetDescriptionOption(text,color));
                     } else {
-                        dispatch(setTitle(text,'black'));
+                        dispatch(SetDescriptionOption(text,'black'));
                     }
                 }
                 break;
             case 'descriptionTitle':
                 if((children !== text || color !== 'black')){
                     if(color){
-                        dispatch(setTitle(text,color));
+                        dispatch(SetDescriptionTitle(text,color));
                     } else {
-                        dispatch(setTitle(text,'black'));
+                        dispatch(SetDescriptionTitle(text,'black'));
                     }
                 }
                 break;
             case 'footer':
                 if((children !== text || color !== 'black')){
                     if(color){
-                        dispatch(setTitle(text,color));
+                        dispatch(SetFooter(text,color));
                     } else {
-                        dispatch(setTitle(text,'black'));
+                        dispatch(SetFooter(text,'black'));
                     }
                 }
                 break;
-            case 'reviewsPerson':
+            case 'reviewersFirstPerson':
                 if((children !== text || color !== 'black')){
                     if(color){
-                        dispatch(setTitle(text,color));
+                        dispatch(SetReviewsFirstPerson(text,color));
                     } else {
-                        dispatch(setTitle(text,'black'));
+                        dispatch(SetReviewsFirstPerson(text,'black'));
+                    }
+                }
+                break;
+            case 'reviewersSecondPerson':
+                if((children !== text || color !== 'black')){
+                    if(color){
+                        dispatch(SetReviewsSecondPerson(text,color));
+                    } else {
+                        dispatch(SetReviewsSecondPerson(text,'black'));
                     }
                 }
                 break;
             case 'descriptionAbout':
                 if((children !== text || color !== 'black')){
                     if(color){
-                        dispatch(setTitle(text,color));
+                        dispatch(SetDescriptionAbout(text,color));
                     } else {
-                        dispatch(setTitle(text,'black'));
+                        dispatch(SetDescriptionAbout(text,'black'));
                     }
                 }
                 break;
+            case 'authorsAction':
+                if((children !== text || color !== 'black')){
+                    if(color){
+                        dispatch(SetAuthorsAction(text,color));
+                    } else {
+                        dispatch(SetAuthorsAction(text,'black'));
+                    }
+                }
+                break;
+            case 'reviewersAction':
+                if((children !== text || color !== 'black')){
+                    if(color){
+                        dispatch(SetReviewersAction(text,color));
+                    } else {
+                        dispatch(SetReviewersAction(text,'black'));
+                    }
+                }
+                break;
+            default :
+                alert(type);
         }
     }
 
@@ -150,13 +190,14 @@ export const Line = ({tag, children,className,type} : LineInterface) : JSX.Eleme
         [style.colorPurple] : activeColor === 'purple',
         [style.colorRed] : activeColor === 'red',
     })} type="text" value={text} ref={inputRef}
-         onChange={(event => setText(event.target.value))}
-         onFocus={() => setVisiblePopup(true)}/>
+                                       onChange={(event => changeText(event.target.value))}
+                                       onFocus={() => setVisiblePopup(true)}/>
 
     const popupEdit : JSX.Element = <Popup
-        colors={colors} onEdit={EditText} onClear={ClearText}
+        colors={colors} onClear={ClearText}
         popupRef={popupRef} onOutsideClick={onOutsideClick}
-        switchAssignColor={switchAssignColor} onClosePopup={closePopup}/>;
+        switchAssignColor={switchAssignColor} onClosePopup={closePopup}
+        activeColor={activeColor}/>;
 
     const img : JSX.Element =  <img src={editSvg} alt="edit" className="editSvg"/>
 
@@ -226,4 +267,4 @@ export const Line = ({tag, children,className,type} : LineInterface) : JSX.Eleme
         default :
             return <></>;
     }
-};
+})

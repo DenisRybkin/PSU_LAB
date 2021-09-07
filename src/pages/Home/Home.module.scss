@@ -1,10 +1,11 @@
 $svg : '.editSvg';
 .wrapper{
-  margin: 50px auto 50px auto;
-  min-height: 99%;
+  margin: 10px auto 40px auto;
+  min-height: 100%;
   max-width: 600px;
   background-color: #ffffff;
-  padding: 60px 80px;
+  padding: 50px 57px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 }
 .pageList{
   input{
@@ -88,5 +89,10 @@ $svg : '.editSvg';
     &:active{
       background-color: darken(#ff3333, 10%);
     }
+  }
+}
+@media screen and (min-height: 1440px){
+  .wrapper{
+    margin: 150px auto;
   }
 }
