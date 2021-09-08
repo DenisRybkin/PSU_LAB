@@ -60,15 +60,30 @@ $svg : '.editSvg';
   }
   margin-bottom: 90px;
 }
+.download{
+  padding: 10px 20px 10px 20px;
+  top: 50px;
+  right: 40px;
+}
+.returnDefault{
+  padding: 10px 20px 10px 13px;
+  top: 50px;
+  left: 40px;
+}
 .button{
+  img{
+    transition: transform .2s ease-in-out;
+    margin-right: 7px;
+    width: 14px;
+    height: 14px;
+  }
+  display: flex;
   position: absolute;
   color: #ffffff;
-  padding: 10px 20px 10px 19px;
-  right: 40px;
+
   font-style: normal;
   font-size: 14px;
-  line-height: 17px;
-  width: 100px;
+  align-items: center;
   border: none;
   background: #4DD599;
   box-sizing: border-box;
@@ -76,6 +91,9 @@ $svg : '.editSvg';
   border-radius: 4px;
   cursor: pointer;
   &:hover{
+    img{
+      transform: translateX(-5px);
+    }
     background-color: darken(#4DD599, 5%);
   }
   &:active{
@@ -91,8 +109,20 @@ $svg : '.editSvg';
     }
   }
 }
+.errorImg{
+  display: block;
+  margin: 0 auto;
+  max-width: 400px;
+  max-height: 400px;
+}
 @media screen and (min-height: 1440px){
   .wrapper{
     margin: 150px auto;
+  }
+  .download{
+    right: 110px;
+  }
+  .returnDefault{
+    right: 110px;
   }
 }

@@ -10,7 +10,7 @@ const initialState : DateState = {
         department : {text : "Кафедра САПР", color:"black"},
         description: {
             title : {text : "отчет", color: "black"},
-            about: {text : "О выполнении лабораторной работы №1 по дисциплине “Основы WEB-Программирования“ ", color:"black"},
+            about: {text : "О лабораторной работы №1 по дисциплине “Основы WEB-Программирования“ ", color:"black"},
             option : {text : "Вариант №5", color: "black"}
         },
         authors : {
