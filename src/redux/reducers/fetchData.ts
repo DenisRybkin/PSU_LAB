@@ -21,18 +21,12 @@ const initialState : DateState = {
                 },
                 {
                     person: {text : "Шульмин А.Н", color:"black"}
-                },
-                {
-                    person: {text : "Рыбкин Д.А", color:"black"}
                 }
             ]
         },
         reviewers : {
             reviewersAction : {text : "Приняли", color : "black"},
             fullNames : [
-                {
-                    person : {text : "Бурукина И.П", color:"black"}
-                },
                 {
                     person : {text : "Бурукина И.П", color:"black"}
                 }

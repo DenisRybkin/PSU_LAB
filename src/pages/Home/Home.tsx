@@ -13,14 +13,31 @@ import axios from "axios";
 
 export const Home: React.FC = (): JSX.Element => {
 
-    const sendTemplate = new Promise((resolve, reject) => {
-
-    })
-
     const {data,isLoaded} = useTypedSelector(state => state.fetchData);
 
     const downlandPage = (): void => {
-        axios.post('http://localhost:3004/api/v1/title/generate ', data)
+        const fileName = prompt('Введите название файла, в противном случае вашему файлу будет присвоено случайное имя')
+        const resp = axios.post('http://localhost:3004/api/v1/title/generate ', data);
+        resp.then(response => {
+            if(response.status === 200){
+                const id = response.data.id;
+                fetch(`http://localhost:3004/api/v1/title/download/${id}`)
+                    .then(resp => resp.blob())
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = fileName ? fileName : id;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                    })
+                    .catch(() => alert('oh no!'));
+            } else {
+                alert("Ошибка с сервером");
+            }
+        });
     }
 
     const resetState = (): void => {

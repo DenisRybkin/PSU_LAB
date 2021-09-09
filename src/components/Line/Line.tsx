@@ -31,11 +31,12 @@ export const Line = React.memo(({tag, children,className,type,color} : LineInter
     }
     const switchAssignColor = (color:string) : void => {
         setActiveColor(color);
+        UseSwitchDispatch(type,dispatch,text,color,children);
     }
     const ClearText = () : void => {
         setText('');
         closePopup();
-        UseSwitchDispatch(type,dispatch,text,activeColor,children);
+        UseSwitchDispatch(type,dispatch,'',activeColor,children);
     }
     const onOutsideClick = React.useCallback<(event : any) => void>((event : any) => {
         const path = event.path || (event.composedPath && event.composedPath());

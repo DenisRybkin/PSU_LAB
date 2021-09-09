@@ -5,12 +5,12 @@ import {Badge} from "../Bagde/Badge";
 import  './Popup.scss'
 
 export const Popup = ({colors,
-                                  onClosePopup,
-                                  switchAssignColor,
-                                  onClear,
-                                  popupRef,
-                                  onOutsideClick,
-                                  activeColor}:PopupInterface) => {
+                          onClosePopup,
+                          switchAssignColor,
+                          onClear,
+                          popupRef,
+                          onOutsideClick,
+                          activeColor}:PopupInterface) => {
 
     React.useEffect(() => {
 
@@ -31,9 +31,8 @@ export const Popup = ({colors,
         return () => {
             document.addEventListener('click', onOutsideClick);
         };
-    }, [onOutsideClick]);
-
-    console.log(popupRef.current);
+    }, [onOutsideClick, popupRef]);
+    
 
     return (
         <div className="add__list-popup" ref={popupRef}>
